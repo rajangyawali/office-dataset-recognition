@@ -241,6 +241,14 @@ if __name__ == '__main__':
 	# 	imglist = os.listdir(args.image_dir)
 	# 	num_images = len(imglist)
 	test_data = []
+	train_labels = []
+	faces = [ 'jivraj', 'rajan','rupesh','sakar']
+	labels = [0, 1, 2, 3]
+	imglist = []
+	image_written = 0
+	for face, label in zip(faces, labels):
+		print("Face", face)
+		print("Label", label)
 
 	imglist = []
 	image_written = 0
@@ -367,6 +375,7 @@ if __name__ == '__main__':
 	for i in range(len(test_data)):
 		region = test_data[i]
 		results = result[i]
+		print(result)
 		y = fig.add_subplot(50,6,len(test_data))
 		label = ''
 		if(results[0] > results[1] and results[0] > results[2] and results[0] > results[3]):
