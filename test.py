@@ -361,7 +361,7 @@ if __name__ == '__main__':
 
 	test_data = np.asarray(test_data)
 	print(test_data.shape)
-	model  = tf.keras.models.load_model('./cnn.h5')
+	model  = tf.keras.models.load_model('./cnn_office.h5')
 	result  = model.predict(test_data)
 	fig=plt.figure()
 	for i in range(len(test_data)):

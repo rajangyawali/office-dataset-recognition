@@ -399,4 +399,5 @@ if __name__ == '__main__':
 		epochs=15,
 		shuffle=True
 	)
-	model.save('./cnn.h5')
+	model.save('./cnn_office.h5')
+	print(model.summary())
