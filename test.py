@@ -363,7 +363,7 @@ if __name__ == '__main__':
 				# image_written += 1
 				region = cv2.resize(region, (128,128))
 				test_data.append(region)
-				train_labels.append(label)
+		train_labels.append(label)
 				
 
 	print(train_labels)
