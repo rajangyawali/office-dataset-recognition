@@ -386,7 +386,7 @@ if __name__ == '__main__':
 			label = 'rupesh'
 		else:
 			label = 'sakar'
-		result_path  = os.path.join('results', label + str(i) + "_.jpg")
+		result_path  = os.path.join('results', label + "_" + str(i) + ".jpg")
 		cv2.imwrite(result_path, region)
 		
 		y.imshow(region,cmap='gray')
