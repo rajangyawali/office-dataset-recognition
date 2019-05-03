@@ -241,9 +241,8 @@ if __name__ == '__main__':
 	# 	imglist = os.listdir(args.image_dir)
 	# 	num_images = len(imglist)
 	test_data = []
-	train_labels = []
-	faces = [ 'jivraj', 'rajan','rupesh','sakar']
-	labels = [0, 1, 2, 3]
+	test_label = []
+	test_score = []
 	for face, label in zip(faces, labels):
 		print("Face", face)
 		print("Label", label)
@@ -258,6 +257,12 @@ if __name__ == '__main__':
 		count += 1
 		# if(count > 10):
 		# 	break
+		word_label = image.split('_')[0]
+		if word_label == 'jivraj':test_label = [1,0,0,0]
+		elif word_label == 'rajan': test_label = [0,1,0,0]
+    	elif word_label == 'rupesh': test_label = [0,0,1,0]
+    	elif word_label == 'sakar': test_label = [0,0,0,1]
+		test_score.append(test_label)
 		total_tic = time.time()
 		im_file = os.path.join(current_dir, image)
 		# im = cv2.imread(im_file)
@@ -363,11 +368,9 @@ if __name__ == '__main__':
 				# image_written += 1
 				region = cv2.resize(region, (128,128))
 				test_data.append(region)
-				train_labels.append(label)
 				
-	test_score = []
-	test_label = []
-	print(train_labels)
+				
+	print(test_score)
 	test_data = np.asarray(test_data)
 	print(test_data.shape)
 	model  = tf.keras.models.load_model('./cnn_office.h5')
@@ -381,22 +384,15 @@ if __name__ == '__main__':
 		label = ''
 		if(results[0] > results[1] and results[0] > results[2] and results[0] > results[3]):
 			label = 'jivraj'
-			test_label = [1,0,0,0]
 		elif(results[1] > results[0] and results[1] > results[2] and results[1] > results[3]):
 			label = 'rajan'
-			test_label = [0,1,0,0]
 		elif(results[2] > results[0] and results[2] > results[1] and results[2] > results[3]):
 			label = 'rupesh'
-			test_label = [0,0,1,0]
 		else:
 			label = 'sakar'
-			test_label = [0,0,0,1]
-		result_path  = os.path.join('results', label + "_" + str(i) + ".jpg")
+		result_path  = os.path.join('results', label + str(i) + ".jpg")
 		cv2.imwrite(result_path, region)
-		test_score.append(test_label)
 		
-		print("The test score is:")
-		print(test_score)
 		y.imshow(region,cmap='gray')
 		plt.title(label)
 		y.axes.get_xaxis().set_visible(False)
