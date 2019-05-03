@@ -394,6 +394,9 @@ if __name__ == '__main__':
 		result_path  = os.path.join('results', label + "_" + str(i) + ".jpg")
 		cv2.imwrite(result_path, region)
 		test_score.append(test_label)
+		
+		print("The test score is:")
+		print(test_score)
 		y.imshow(region,cmap='gray')
 		plt.title(label)
 		y.axes.get_xaxis().set_visible(False)
