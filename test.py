@@ -365,7 +365,8 @@ if __name__ == '__main__':
 				test_data.append(region)
 				train_labels.append(label)
 				
-
+	test_score = []
+	test_label = []
 	print(train_labels)
 	test_data = np.asarray(test_data)
 	print(test_data.shape)
@@ -380,15 +381,19 @@ if __name__ == '__main__':
 		label = ''
 		if(results[0] > results[1] and results[0] > results[2] and results[0] > results[3]):
 			label = 'jivraj'
+			test_label = [1,0,0,0]
 		elif(results[1] > results[0] and results[1] > results[2] and results[1] > results[3]):
 			label = 'rajan'
+			test_label = [0,1,0,0]
 		elif(results[2] > results[0] and results[2] > results[1] and results[2] > results[3]):
 			label = 'rupesh'
+			test_label = [0,0,1,0]
 		else:
 			label = 'sakar'
+			test_label = [0,0,0,1]
 		result_path  = os.path.join('results', label + "_" + str(i) + ".jpg")
 		cv2.imwrite(result_path, region)
-		
+		test_score.append(test_label)
 		y.imshow(region,cmap='gray')
 		plt.title(label)
 		y.axes.get_xaxis().set_visible(False)
