@@ -244,8 +244,6 @@ if __name__ == '__main__':
 	train_labels = []
 	faces = [ 'jivraj', 'rajan','rupesh','sakar']
 	labels = [0, 1, 2, 3]
-	imglist = []
-	image_written = 0
 	for face, label in zip(faces, labels):
 		print("Face", face)
 		print("Label", label)
