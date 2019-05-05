@@ -373,7 +373,7 @@ if __name__ == '__main__':
 				region = cv2.resize(region, (128,128))
 				test_data.append(region)
 
-	ptint(test_score)
+	print(test_score)
 	test_data = np.asarray(test_data)
 	print(test_data.shape)
 	model  = tf.keras.models.load_model('./cnn_office.h5')
