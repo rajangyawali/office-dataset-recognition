@@ -249,15 +249,14 @@ if __name__ == '__main__':
 	image_written = 0
 	current_dir = 'test_data'
 	images = os.listdir(current_dir)
+	print(images)
 	count  = 0
 	print('Loaded Photo: {} images.'.format(len(images)))
 	for image in images:
 		count += 1
 		# if(count > 10):
 		# 	break
-		word_label = image.split('_')[0]
-		print(word_label)
-		test_score.append(test_label)
+		
 		total_tic = time.time()
 		im_file = os.path.join(current_dir, image)
 		# im = cv2.imread(im_file)
