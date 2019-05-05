@@ -249,7 +249,7 @@ if __name__ == '__main__':
 	image_written = 0
 	current_dir = 'test_data'
 	images = os.listdir(current_dir)
-	print(images)
+	
 	count  = 0
 	print('Loaded Photo: {} images.'.format(len(images)))
 	for image in images:
