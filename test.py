@@ -243,9 +243,7 @@ if __name__ == '__main__':
 	test_data = []
 	test_label = []
 	test_score = []
-	for face, label in zip(faces, labels):
-		print("Face", face)
-		print("Label", label)
+	
 
 	imglist = []
 	image_written = 0
