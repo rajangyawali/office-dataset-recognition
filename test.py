@@ -260,10 +260,11 @@ if __name__ == '__main__':
 			test_label = [1,0,0,0]
 		elif word_label == 'rajan': 
 			test_label = [0,1,0,0]
-    	elif word_label == 'rupesh': 
-			test_label = [0,0,1,0]
+    	
     	elif word_label == 'sakar': 
 			test_label = [0,0,0,1]
+		else:
+			test_label = [0,0,1,0]
 		test_score.append(test_label)
 		total_tic = time.time()
 		im_file = os.path.join(current_dir, image)
