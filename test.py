@@ -378,11 +378,13 @@ if __name__ == '__main__':
 	print(test_data.shape)
 	model  = tf.keras.models.load_model('./cnn_office.h5')
 	result  = model.predict(test_data)
+	test_y = np.array(result)
+	print(test_y)
 	fig=plt.figure()
 	for i in range(len(test_data)):
 		region = test_data[i]
 		results = result[i]
-		print(results)
+		
 		y = fig.add_subplot(50,6,len(test_data))
 		label = ''
 		if(results[0] > results[1] and results[0] > results[2] and results[0] > results[3]):
