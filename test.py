@@ -255,6 +255,7 @@ if __name__ == '__main__':
 		# 	break
 		total_tic = time.time()
 		im_file = os.path.join(current_dir, image)
+		print("hello")
 		# im = cv2.imread(im_file)
 		im_in = np.array(imread(im_file))
 		if len(im_in.shape) == 2:
