@@ -246,6 +246,9 @@ if __name__ == '__main__':
 	imglist = []
 	image_written = 0
 	current_dir = 'test_data'
+	word_label = ''
+	test_label = []
+	test_score = []
 	images = os.listdir(current_dir)
 	count  = 0
 	print('Loaded Photo: {} images.'.format(len(images)))
@@ -254,8 +257,18 @@ if __name__ == '__main__':
 		# if(count > 10):
 		# 	break
 		total_tic = time.time()
+		word_label = img.split('_')[0]
+		if (word_label = 'jivraj'):
+			test_label = [1,0,0,0]
+		elif (word_label = 'rajan'):
+			test_label = [0,1,0,0]
+		elif (word_label = 'rupesh'):
+			test_label = [0,0,1,0]
+		else:
+			test_label = [0,0,0,1]
+		test_score.append(test_label)
 		im_file = os.path.join(current_dir, image)
-		print("hello")
+		
 		# im = cv2.imread(im_file)
 		im_in = np.array(imread(im_file))
 		if len(im_in.shape) == 2:
@@ -274,7 +287,7 @@ if __name__ == '__main__':
 		im_data_pt = torch.from_numpy(im_blob)
 		im_data_pt = im_data_pt.permute(0, 3, 1, 2)
 		im_info_pt = torch.from_numpy(im_info_np)
-		print("hello")
+		
 		im_data.resize_(im_data_pt.size()).copy_(im_data_pt)
 		im_info.resize_(im_info_pt.size()).copy_(im_info_pt)
 		gt_boxes.resize_(1, 1, 5).zero_()
@@ -360,7 +373,7 @@ if __name__ == '__main__':
 				region = cv2.resize(region, (128,128))
 				test_data.append(region)
 
-
+	ptint(test_score)
 	test_data = np.asarray(test_data)
 	print(test_data.shape)
 	model  = tf.keras.models.load_model('./cnn_office.h5')
@@ -369,7 +382,7 @@ if __name__ == '__main__':
 	for i in range(len(test_data)):
 		region = test_data[i]
 		results = result[i]
-		print(result)
+		print(results)
 		y = fig.add_subplot(50,6,len(test_data))
 		label = ''
 		if(results[0] > results[1] and results[0] > results[2] and results[0] > results[3]):
