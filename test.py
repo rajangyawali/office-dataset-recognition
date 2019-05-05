@@ -25,6 +25,7 @@ import matplotlib.pyplot as plt
 
 import torchvision.transforms as transforms
 import torchvision.datasets as dset
+from PIL import Image
 from scipy.misc import imread
 from roi_data_layer.roidb import combined_roidb
 from roi_data_layer.roibatchLoader import roibatchLoader
@@ -241,22 +242,17 @@ if __name__ == '__main__':
 	# 	imglist = os.listdir(args.image_dir)
 	# 	num_images = len(imglist)
 	test_data = []
-	test_label = []
-	test_score = []
-	
-	word_label = ''
+
 	imglist = []
 	image_written = 0
 	current_dir = 'test_data'
 	images = os.listdir(current_dir)
-	
 	count  = 0
 	print('Loaded Photo: {} images.'.format(len(images)))
 	for image in images:
 		count += 1
 		# if(count > 10):
 		# 	break
-		
 		total_tic = time.time()
 		im_file = os.path.join(current_dir, image)
 		# im = cv2.imread(im_file)
@@ -362,9 +358,8 @@ if __name__ == '__main__':
 				# image_written += 1
 				region = cv2.resize(region, (128,128))
 				test_data.append(region)
-				
-				
-	print(test_score)
+
+
 	test_data = np.asarray(test_data)
 	print(test_data.shape)
 	model  = tf.keras.models.load_model('./cnn_office.h5')
