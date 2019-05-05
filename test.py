@@ -397,8 +397,7 @@ if __name__ == '__main__':
 			label = 'sakar'
 		result_path  = os.path.join('results', label + str(i) + ".jpg")
 		cv2.imwrite(result_path, region)
-		y_pred.append(test_y)
-		
+			
 		y.imshow(region,cmap='gray')
 		plt.title(label)
 		y.axes.get_xaxis().set_visible(False)
