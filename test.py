@@ -258,11 +258,11 @@ if __name__ == '__main__':
 		# 	break
 		total_tic = time.time()
 		word_label = img.split('_')[0]
-		if (word_label = 'jivraj'):
+		if (word_label == 'jivraj'):
 			test_label = [1,0,0,0]
-		elif (word_label = 'rajan'):
+		elif (word_label == 'rajan'):
 			test_label = [0,1,0,0]
-		elif (word_label = 'rupesh'):
+		elif (word_label == 'rupesh'):
 			test_label = [0,0,1,0]
 		else:
 			test_label = [0,0,0,1]
