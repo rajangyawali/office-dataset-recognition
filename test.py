@@ -273,7 +273,7 @@ if __name__ == '__main__':
 		im_data_pt = torch.from_numpy(im_blob)
 		im_data_pt = im_data_pt.permute(0, 3, 1, 2)
 		im_info_pt = torch.from_numpy(im_info_np)
-
+		print("hello")
 		im_data.resize_(im_data_pt.size()).copy_(im_data_pt)
 		im_info.resize_(im_info_pt.size()).copy_(im_info_pt)
 		gt_boxes.resize_(1, 1, 5).zero_()
