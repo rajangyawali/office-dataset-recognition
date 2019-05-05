@@ -378,13 +378,13 @@ if __name__ == '__main__':
 	print(test_data.shape)
 	model  = tf.keras.models.load_model('./cnn_office.h5')
 	result  = model.predict(test_data)
-	test_y = np.array(result)
-	print(test_y)
+	test_y = []
+	y_pred = []
 	fig=plt.figure()
 	for i in range(len(test_data)):
 		region = test_data[i]
 		results = result[i]
-		
+		test_y = np.array(results)
 		y = fig.add_subplot(50,6,len(test_data))
 		label = ''
 		if(results[0] > results[1] and results[0] > results[2] and results[0] > results[3]):
@@ -397,11 +397,13 @@ if __name__ == '__main__':
 			label = 'sakar'
 		result_path  = os.path.join('results', label + str(i) + ".jpg")
 		cv2.imwrite(result_path, region)
+		y_pred.append(test_y)
 		
 		y.imshow(region,cmap='gray')
 		plt.title(label)
 		y.axes.get_xaxis().set_visible(False)
 		y.axes.get_yaxis().set_visible(False)
+	print(y_pred)
 
 	plt.subplots_adjust(top=3.92, bottom=0.15, left=0.40, right=1.8, hspace=0.25, wspace=0.35)
 	plt.show()
