@@ -257,7 +257,7 @@ if __name__ == '__main__':
 		# if(count > 10):
 		# 	break
 		total_tic = time.time()
-		word_label = img.split('_')[0]
+		word_label = image.split('_')[0]
 		if (word_label == 'jivraj'):
 			test_label = [1,0,0,0]
 		elif (word_label == 'rajan'):
