@@ -393,7 +393,7 @@ if __name__ == '__main__':
 			label = 'rajan'
 		elif(results[2] > results[0] and results[2] > results[1] and results[2] > results[3] and results[2] > results[4]):
 			label = 'rupesh'
-		elif(results[3] > results[0] and results[3] > results[1] and results[3] > results[3] and results[3] > results[4]):
+		elif(results[3] > results[0] and results[3] > results[1] and results[3] > results[2] and results[3] > results[4]):
 			label = 'sakar'
 		else:
 			label = 'nonemployee'
